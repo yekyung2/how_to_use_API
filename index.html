@@ -14,13 +14,22 @@
             font-family: 'Gugi', cursive;
 
         }
+
+        h1 {
+            color: darkred;
+        }
     </style>
 </head>
 
 <body>
-    <h1> API Practice </h1>
+    <h1> ✨ API Practice by YEKYUNG ✨</h1>
     <h2> 📚 Book Search Using KaKao API </h2>
     <hr>
+
+    <div id="input-form">
+        🔎 책 찾기 : <input type="text" id="bookname" />
+        <button id="search">검색</button>
+    </div> <br>
     <div class="container">
         <div class="thumbnail"></div>
         <p></p>
@@ -28,20 +37,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script>
-        $.ajax({
-                method: "GET",
-                url: "https://dapi.kakao.com/v3/search/book?target=title",
-                data: {
-                    query: "호모사피엔스",
-                },
-                headers: {
-                    Authorization: "KakaoAK 0f7acd5ca96b1d76578d02adc4161263"
-                },
-            })
-            .done(function (msg) {
-                $("p").append(msg.documents[0].title);
-                $(".thumbnail").append('<img src="' + msg.documents[0].thumbnail + '"/>');
+        $(document).ready(function () {
+            $("#search").click(function () {
+                $.ajax({
+                        method: "GET",
+                        url: "https://dapi.kakao.com/v3/search/book?target=title",
+                        data: {
+                            query: $("#bookname").val()
+                        },
+                        headers: {
+                            Authorization: "KakaoAK 0f7acd5ca96b1d76578d02adc4161263"
+                        },
+                    })
+                    .done(function (msg) {
+                        $("p").append(msg.documents[0].title);
+                        $(".thumbnail").append('<img src="' + msg.documents[0].thumbnail + '"/>');
+                    });
             });
+        });
     </script>
 </body>
 
