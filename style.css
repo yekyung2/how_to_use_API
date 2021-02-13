@@ -1,0 +1,22 @@
+html {
+    font-family: 'Gugi', cursive;
+    background-color: black;
+
+}
+
+h1 {
+    color: chartreuse;
+}
+
+body{
+    text-align: center;
+    color: white;
+}
+
+.booksearch{
+    margin-top: 15rem;
+}
+
+.container{
+    flex-flow: column;
+}
